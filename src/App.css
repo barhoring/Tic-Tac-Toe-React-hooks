@@ -1,24 +1,41 @@
 .App {
   text-align: center;
   color: "pink";
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-.Box {
+.Board {
+  width: 500px;
+  height: 450px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.Cell {
   border: 1px solid green;
   width: 150px;
   height: 150px;
+  font-size: x-large;
 }
 
-.Row {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  width: 80%;
+.Menu {
+  color: orange;
+  width: 10%;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {

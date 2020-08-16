@@ -2,7 +2,7 @@ import React from "react";
 
 const Cell = ({ handleClick, content }) => {
   return (
-    <div className="Box" onClick={handleClick}>
+    <div className="Cell flex-center" onClick={handleClick}>
       {content}
     </div>
   );
