@@ -37,7 +37,9 @@ function App() {
     const newBoard = deepClone(defaultBoard);
     setBoard(newBoard);
     setIsGameOver(false);
+    setWinner(null);
     setTurn("X");
+    setMoves(0);
   };
 
   // There are 8 different ways to win.
@@ -88,7 +90,12 @@ function App() {
 
   return (
     <div className="App">
-      <Menu turn={turn} newGame={newGame} winner={winner} />
+      <Menu
+        turn={turn}
+        newGame={newGame}
+        winner={winner}
+        isGameOver={isGameOver}
+      />
       <Board
         turn={turn}
         handleClick={handleClick}

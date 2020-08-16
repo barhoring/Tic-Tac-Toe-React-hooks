@@ -2,15 +2,11 @@ import React from "react";
 import "./App.css";
 import Cell from "./Cell";
 
-const Board = ({ handleClick, board, isGameOver, newGame, turn }) => {
+const Board = ({ handleClick, board, isGameOver }) => {
   return isGameOver ? (
     <>
       <div className="Board" style={{ flexDirection: "column" }}>
-        <div>
-          <button onClick={() => newGame()}>New Game</button>
-        </div>
         <div>Game Over</div>
-        <div>{turn === "X" ? "O" : "X"} wins!</div>
       </div>
     </>
   ) : (
