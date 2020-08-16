@@ -1,13 +1,20 @@
 import React from "react";
 import "./App.css";
-import Row from "./Row";
+import Cell from "./Cell";
 
 const Board = ({ handleClick, board }) => {
   return (
-    <div>
-      <Row row={board[0]} />
-      <Row row={board[1]} />
-      <Row row={board[2]} />
+    <div style={{ width: "500px", display: "flex", flexWrap: "wrap" }}>
+      {[0, 1, 2].map((row, index) => {
+        return [0, 1, 2].map((col, index) => {
+          return (
+            <Cell
+              handleClick={() => handleClick(row, col)}
+              content={board[row][col]}
+            />
+          );
+        });
+      })}
     </div>
   );
 };

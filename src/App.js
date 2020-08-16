@@ -3,7 +3,8 @@ import "./App.css";
 import Board from "./Board";
 
 function App() {
-  const [turn, setTurn] = useState("white");
+  // X player starts
+  const [turn, setTurn] = useState("X");
   const [isGmaeOver, setIsGameOver] = useState(false);
   const [board, setBoard] = useState([
     ["", "", ""],
@@ -18,7 +19,7 @@ function App() {
     }
   }, [board]);
 
-  // There are 8 different way to win.
+  // There are 8 different ways to win.
   // Check all of them
   const checkGameEnd = () => {
     if (
@@ -50,11 +51,13 @@ function App() {
       return true;
   };
 
-  const handleClick = (x, y, color) => {
+  const handleClick = (x, y) => {
+    debugger;
     // copy the board
     const newBoard = [...board];
-    board[x][y] = color;
+    board[x][y] = turn;
     setBoard(newBoard);
+    turn === "X" ? setTurn("O") : setTurn("X");
   };
 
   debugger;
@@ -65,7 +68,15 @@ function App() {
         <Board handleClick={handleClick} board={board} />
       </div>
     );
-  else return <div>Game Over</div>;
+  else {
+    const winner = turn == "X" ? "O" : "X";
+    return (
+      <>
+        <h1>Game Over</h1>
+        <div>{winner} wins!</div>
+      </>
+    );
+  }
 }
 
 export default App;
