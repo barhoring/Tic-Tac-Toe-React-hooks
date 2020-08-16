@@ -89,7 +89,10 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ padding: "20px", display: "flex", justifyContent: "center" }}
+    >
       <Menu
         turn={turn}
         newGame={newGame}

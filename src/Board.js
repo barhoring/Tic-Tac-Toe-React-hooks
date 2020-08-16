@@ -6,7 +6,7 @@ const Board = ({ handleClick, board, isGameOver }) => {
   return isGameOver ? (
     <>
       <div className="Board" style={{ flexDirection: "column" }}>
-        <div>Game Over</div>
+        <h1>Game Over</h1>
       </div>
     </>
   ) : (
