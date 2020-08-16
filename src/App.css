@@ -1,5 +1,19 @@
 .App {
   text-align: center;
+  color: "pink";
+}
+
+.Box {
+  border: 1px solid green;
+  width: 150px;
+  height: 150px;
+}
+
+.Row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 80%;
 }
 
 .App-logo {
