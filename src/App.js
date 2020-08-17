@@ -3,10 +3,11 @@ import "./App.css";
 import Board from "./Board";
 import Menu from "./Menu";
 
+// When MAX_MOVES reached and there is no winner - announce a tie
 const MAX_MOVES = 9;
 
 // Alternative array could be 1 dimentional with length 9
-// and avoid the deep clone
+// and in this way avoid the deep clone of board
 const defaultBoard = [
   ["", "", ""],
   ["", "", ""],
@@ -17,7 +18,7 @@ function App() {
   // X player starts
   const [turn, setTurn] = useState("X");
   const [isGameOver, setIsGameOver] = useState(false);
-  const [board, setBoard] = useState([...defaultBoard]);
+  const [board, setBoard] = useState(deepClone(defaultBoard));
   // Game always end after 9 moves
   const [winner, setWinner] = useState(null);
   const [moves, setMoves] = useState(0);
@@ -29,10 +30,9 @@ function App() {
       const winner = turn === "X" ? "O" : "X";
       setWinner(winner);
     } else if (moves === MAX_MOVES) setIsGameOver(true);
-  }, [board]);
+  }, [board]); // this dependency array will suffice
 
   const newGame = () => {
-    debugger;
     // create a copy to force render
     const newBoard = deepClone(defaultBoard);
     setBoard(newBoard);
@@ -74,9 +74,10 @@ function App() {
       return true;
   };
 
-  const deepClone = (array) => {
+  // deepClone is not an arrow function so it can be hoisted
+  function deepClone(array) {
     return JSON.parse(JSON.stringify(array));
-  };
+  }
 
   const handleClick = (x, y) => {
     // Create a copy to force render
@@ -89,10 +90,7 @@ function App() {
   };
 
   return (
-    <div
-      className="App"
-      style={{ padding: "20px", display: "flex", justifyContent: "center" }}
-    >
+    <div className="App">
       <Menu
         turn={turn}
         newGame={newGame}

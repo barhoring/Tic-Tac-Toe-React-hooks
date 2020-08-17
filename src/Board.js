@@ -5,23 +5,27 @@ import Cell from "./Cell";
 const Board = ({ handleClick, board, isGameOver }) => {
   return isGameOver ? (
     <>
-      <div className="Board" style={{ flexDirection: "column" }}>
-        <h1>Game Over</h1>
+      <div className="Board border center">
+        <div style={{ flexDirection: "column", alignItems: "center " }}>
+          <h1>Game Over</h1>
+        </div>
       </div>
     </>
   ) : (
-    <div className="Board">
-      {[0, 1, 2].map((row, index) => {
-        return [0, 1, 2].map((col, index) => {
-          return (
-            <Cell
-              key={`${row}${col}`}
-              handleClick={() => handleClick(row, col)}
-              content={board[row][col]}
-            />
-          );
-        });
-      })}
+    <div className="center border grey">
+      <div className="Board">
+        {[0, 1, 2].map((row, index) => {
+          return [0, 1, 2].map((col, index) => {
+            return (
+              <Cell
+                key={`${row}${col}`}
+                handleClick={() => handleClick(row, col)}
+                content={board[row][col]}
+              />
+            );
+          });
+        })}
+      </div>
     </div>
   );
 };
