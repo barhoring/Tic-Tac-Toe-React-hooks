@@ -18,8 +18,9 @@ function App() {
   // X player starts
   const [turn, setTurn] = useState("X");
   const [isGameOver, setIsGameOver] = useState(false);
-  const [board, setBoard] = useState(deepClone(defaultBoard));
+  const [board, setBoard] = useState([...defaultBoard]);
   // Game always end after 9 moves
+  // // Game always end after 9 moves
   const [winner, setWinner] = useState(null);
   const [moves, setMoves] = useState(0);
 
@@ -34,7 +35,7 @@ function App() {
 
   const newGame = () => {
     // create a copy to force render
-    const newBoard = deepClone(defaultBoard);
+    const newBoard = [...defaultBoard];
     setBoard(newBoard);
     setIsGameOver(false);
     setWinner(null);
@@ -74,15 +75,12 @@ function App() {
       return true;
   };
 
-  // deepClone is not an arrow function so it can be hoisted
-  function deepClone(array) {
-    return JSON.parse(JSON.stringify(array));
-  }
-
   const handleClick = (x, y) => {
     // Create a copy to force render
     if (board[x][y] !== "") return;
-    const newBoard = deepClone(board);
+    // const newBoard = deepClone(board);
+    const newBoard = [...board];
+    newBoard[x] = [...newBoard[x]];
     newBoard[x][y] = turn;
     setBoard(newBoard);
     turn === "X" ? setTurn("O") : setTurn("X");
